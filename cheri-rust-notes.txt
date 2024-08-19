@@ -1,0 +1,9 @@
+Cannot create an allocator using standard Rust, will have to use CHERI-Rust which will be based off of the strict provenance experiment. Since the Rust compiler contains 543051 lines of Rust code (not including blank lines and comments) using the `cloc` (count lines of code) tool, it would not make sense to try to create a rust compiler for CHERI-Rust. This task is already being done by Lewis Revill, and even if 0.1% of the Rust LLVM compiler has to be changed this would still be an impossible task as it would require understanding the entire codebase. Unclear whether the compiler works, there was an issue saying it doesn't but the author of the issue later claims that the issue was fixed.
+
+Differences between standard Rust and Cheri-Rust:
+- pointers and reference types will have to change to a new `capability` type derived from a pointer/reference, with a method that verifies the capability's validity by calling `CGetTag`/`CCheckTag`, depending on whether an exception should be thrown
+- `usize` will be 128 bits instead of 64, either assume purecap or break Rust requirement of `usize` allowing any pointer to be cast into it
+- `isize` will be 64 bits as usual, representing an offset within a capability's address
+- make `Cap<*mut ()>` a wrapper for a `*mut ()` pointer, agnostic about purecap mode, where in purecap mode `size_of::<*mut ()>() == size_of::<Cap<*mut ()>>()`, and in hybrid mode `size_of::<*mut ()>() < size_of::<Cap<*mut ()>>()`
+- `offset` and `wrapping_offset` methods will have to change since `offset` leads to UB if OOB, and `wrapping_offset` could result in a valid but nonsensical pointer
+- Rust allows int2ptr cast using `as`, CHERI doesn't, this will have to be blocked on purecap mode

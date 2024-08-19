@@ -1,0 +1,32 @@
+Discussion on how to make Rust support CHERI better:
+https://tratt.net/laurie/blog/2022/making_rust_a_better_fit_for_cheri_and_other_platforms.html
+Original article referenced:
+https://faultlore.com/blah/fix-rust-pointers/
+
+Cambridge
+Cambridge CHERI specification: https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-987.pdf
+An Introduction to CHERI: https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-941.pdf
+CHERI Programmer's Guide: https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-877.pdf
+CHERI C/C++ Programmer's Guide: https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-947.pdf
+Strengthening memory safety in Rust: exploring CHERI capabilities for a safe language: https://nw0.github.io/cheri-rust.pdf
+Cambridge Clean Slate Trustworthy Secure Research and Development (CTSRD) CHERI home page: https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/
+Adversarial CHERI Exercises and Missions: https://ctsrd-cheri.github.io/cheri-exercises/
+Adventures iin Porting Rust: https://www.cl.cam.ac.uk/research/security/ctsrd/pdfs/cheritech24/03_03_Sarah_Harris.pdf
+
+Rust Compiler
+Rust Compiler Source Code: https://github.com/rust-lang/rust/tree/master/compiler
+Rust Compiler for CHERI: https://github.com/CyberHive/rust-cheri
+
+Other Rust
+2023 EuroLLVM - A Rusty CHERI: The path to hardware capabilities in Rust: https://www.youtube.com/watch?v=6vCh3WSLMvo
+Strict Provenance GitHub Issue: https://github.com/rust-lang/rust/issues/95228
+Strict Provenance Docs: https://doc.rust-lang.org/nightly/std/ptr/index.html#strict-provenance
+`with_addr` Docs: https://doc.rust-lang.org/std/primitive.pointer.html#method.with_addr
+`offset` Docs: https://doc.rust-lang.org/std/primitive.pointer.html#method.offset
+`wrapping_offset` docs: https://doc.rust-lang.org/std/primitive.pointer.html
+`std::intrinsics::offset` docs: https://doc.rust-lang.org/std/intrinsics/fn.offset.html
+CHERIoT-platform "Why C++ and not Rust?": https://github.com/CHERIoT-Platform/cheriot-rtos/blob/main/docs/faq.md#why-c-and-not-rust
+
+CHERI ports:
+https://github.com/CTSRD-CHERI/cheribsd/tree/main
+https://github.com/cheri-linux
